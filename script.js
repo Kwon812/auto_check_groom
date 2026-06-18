@@ -72,7 +72,7 @@ async function getPostId(token) {
     })
     if (!res.ok) {
         const error = await res.json()
-        throw new ApiError('블로그 아이디 에러', error)
+        throw new ApiError('블로그 아이디 가져오기 에러', error)
     }
     const [post] = await res.json()
     return post.id
@@ -91,7 +91,9 @@ async function dailyCheck(token) {
     if (!res.ok) {
         const error = await res.json()
         console.log(error)
+        return
     }
+    console.log(`dailyCheck success`)
 }
 
 
@@ -111,7 +113,9 @@ async function postComment(token, roomId) {
     if (!res.ok) {
         const error = await res.json()
         console.log(error)
+        return
     }
+    console.log(`comments at ${roomId}`)
 }
 
 async function postLikes(token, roomId) {
@@ -130,7 +134,9 @@ async function postLikes(token, roomId) {
     if (!res.ok) {
         const error = await res.json()
         console.log(error)
+        return
     }
+    console.log(`likes at ${roomId}`)
 }
 
 async function finishQuestById(token, questId) {
@@ -146,8 +152,10 @@ async function finishQuestById(token, questId) {
     })
     if (!res.ok) {
         const error = await res.json()
-        console.log(error)
+        console.log('퀘스트 끝내기 에러 questId:',questId,error)
+        return
     }
+    console.log(`finished quest ${questId}`)
 }
 
 async function aAngGaGGUl() {
@@ -157,6 +165,7 @@ async function aAngGaGGUl() {
         const token = await getToken(GOORM_SID, ACCOUNTS_SID, GOORMACOUNTS_SID)
         // 데일리 미션 아이디
         const todoListQuestId = await getTodoListId(token)
+        console.log(`questId:${todoListQuestId}`)
         //데일리 기프트 퀘스트 아이디(25토큰)
         const goalQuestId = await getGoalQuestId(token)
         //출첵
@@ -164,6 +173,7 @@ async function aAngGaGGUl() {
         //
         //좋아요,코멘트 남길 게시글 아이디
         const postId = await getPostId(token)
+        console.log('게시글 아이디', postId)
         //좋아요
         const postLike = await postLikes(token, postId)
         //코멘트
