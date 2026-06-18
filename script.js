@@ -90,7 +90,7 @@ async function dailyCheck(token) {
     })
     if (!res.ok) {
         const error = await res.json()
-        console.log(error)
+        console.log('출첵에러',error)
         return
     }
     console.log(`dailyCheck success`)
