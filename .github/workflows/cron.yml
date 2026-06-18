@@ -1,0 +1,25 @@
+name: 자동보상받기
+
+on:
+  schedule:
+    - cron: '5 15 * * *'   # 매일 한국시간 자정
+  workflow_dispatch:       # 수동 실행 버튼 추가
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: Node 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 패키지 설치
+        run: npm install
+
+      - name: 스크립트 실행
+        run: node script.js
