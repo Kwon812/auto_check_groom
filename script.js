@@ -7,9 +7,9 @@ class ApiError extends Error {
     }
 }
 
-const GOORM_SID = 's%3AaVSmYdDoD8XO7OJk9IxRG5cYRSdr5rhP.vhxn1SDaZYESo2Loge%2B8B6P01HKNJm9PaIbsKyaVjGU'
-const ACCOUNTS_SID = 's%3AVpF2Om_olt1NI9qoRkPWFEVcSbM5E40R.nS64dnWcQVmswPx6gH9uxQxR%2FPslI2%2FbApORq%2BXLnC4'
-const GOORMACOUNTS_SID = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODI3MTI4NjgsIlRva2VuVHlwZSI6ImxldmVsMSIsImlkIjoidHJlNzIzX2l5ZXpvYnJxbSIsImVtYWlsIjoidHJlNzIzX2l5ZXpvYnJxbSIsImNyZWF0ZWRhdGUiOjE3ODIxMDgwNjgsInNlc3Npb25pZCI6InZUY002dHFHbjJKYk10MGlUUmw2WTV4UHVraGlZeG9OVFhtV0lCVUdXdGM9IiwiVFRMIjowfQ.RKOZnDA-lfiocAUO50IK6sxWfFZr1gL49PeTNATtKVnONbPYjUEyYgb2NSf4tAF0jTVc6y6kr_E_P04zYyGhrt41MLnHCMjYjMYjE4oI4UfXD6lapu9YXNE0DvV_7f9gtNpQ47-n9uybQUAjQQ3u5-ctimRj_jUe-8C9k1byThu2IdhodN-7qRzFAQMtzEHtVKLWEKNC7Op6jvk2sB00F8ZCAXg9Is2lB62kEFerZn16i5b2Y1OS-YDUoGoadRqsoy_W56LQBip5cKLtgjcE5XX04IYeq-OmZo6F9mqprKqgjBGXuO7HWs2CLF7th49trelx038Pe2w_t3vOGKjwcQ'
+const GOORM_SID = process.env.GOORM_SID
+const ACCOUNTS_SID = process.env.ACCOUNTS_SID
+const GOORMACOUNTS_SID = process.env.GOORMACOUNTS_SID
 
 async function getToken(goormSid, accountsSid, goormAccountsSid) {
     const res = await fetch('https://exp-server.goorm.io/v1/auth/api-tokens/validate', {

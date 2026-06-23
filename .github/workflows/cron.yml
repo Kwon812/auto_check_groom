@@ -23,3 +23,7 @@ jobs:
 
       - name: 스크립트 실행
         run: node script.js
+        env:
+          GOORM_SID: ${{ secrets.GOORM_SID }}
+          ACCOUNTS_SID: ${{ secrets.ACCOUNTS_SID }}
+          GOORMACOUNTS_SID: ${{ secrets.GOORMACOUNTS_SID }}
